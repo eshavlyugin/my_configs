@@ -1,0 +1,52 @@
+XTerm*faceName: Bitstream Vera Serif Mono
+xterm*faceSize: 16
+xterm*vt100*geometry: 80x60
+xterm*saveLines: 16384
+xterm*loginShell: true
+xterm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
+xterm*termName: xterm-color
+xterm*eightBitInput: false
+
+URxvt.font:     xft:bitstream vera sans mono:size=16:antialias=true
+URxvt.boldFont: xft:bitstream vera sans mono:bold:size=16:antialias=true
+
+URxvt.perl-ext-common:  default,clipboard,matcher,tabbedex
+URxvt.url-launcher:      chromium-browser
+URxvt.matcher.button:   1
+URxvt.colorUL: #4682B4
+URxvt.tabbed.tabbar-fg: 2
+URxvt.tabbed.tabbar-bg: 0
+URxvt.tabbed.tab-fg: 2
+URxvt.tabbed.tab-bg: 0
+URxvt.tabbed.autohide:  yes
+URxvt.tabbed.new-button:  yes
+URxvt.tabbed.title: yes
+URxvt.keysym.Control-Mod4-t: perl:tabbedex:new_tab
+URxvt.keysym.Mod4-Page_Up: perl:tabbedex:next_tab
+URxvt.keysym.Mod4-Page_Down: perl:tabbedex:prev_tab
+URxvt.keysym.Control-Mod4-Left: perl:tabbedex:move_tab_left
+URxvt.keysym.Control-Mod4-Right: perl:tabbedex:move_tab_right
+URxvt.keysym.Control-Mod4-y: perl:tabbedex:rename_tab
+
+URxvt.tabbed.no-tabbedex-keys: true
+URxvt.iso14755: False
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+
+URxvt*color0:  #000000
+URxvt*color1:  #B40000
+URxvt*color2:  #00AA00
+URxvt*color3:  #AAAA00
+URxvt*color4:  #5555AA
+URxvt*color5:  #AA00AA
+URxvt*color6:  #00AAAA
+URxvt*color7:  #AAAAAA
+URxvt*color8:  #555555
+URxvt*color9:  #FF0000
+URxvt*color10: #00FF00
+URxvt*color11: #FFFF00
+URxvt*color12: #6464FF
+URxvt*color13: #FF00FF
+URxvt*color14: #00FFFF
+URxvt*color15: #FFFFFF
+

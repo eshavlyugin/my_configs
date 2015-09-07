@@ -43,7 +43,6 @@ beautiful.init("/usr/share/awesome/themes/default/theme.lua")
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvtCtl.sh -f -t=new"
 editor = os.getenv("EDITOR") or "emacsclient -nw"
-editor_cmd = "urxvtCtl.sh -f -e=\"" .. editor .. " ; exit\""
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -84,8 +83,8 @@ end
 -- {{{ Menu
 -- Create a laucher widget and a main menu
 myawesomemenu = {
-   { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awesome.conffile },
+   { "manual", "urxvtCtl.sh -f -e=\"man awesome ; exit\"" },
+   { "edit config", "urxvtCtl.sh -f -e=\"" .. editor .. " " .. awesome.conffile .. " ; exit \"" },
    { "restart", awesome.restart },
    { "quit", awesome.quit }
 }

@@ -13,33 +13,37 @@
 (require 'dired)
 (require 'yasnippet)
 (require 'irony)
+(require 'company-irony)
 (require 'irony-snippet)
 (require 'ido)
 (require 'org)
+(require 'company-c-headers)
 (require 'company-statistics)
+(require 'tabbar)
 
 (yas-global-mode 1)
 (setq company-racer-rust-src "/home/zhenyok/Programming/projects/rust/src")
 (setq company-racer-executable "/home/zhenyok/Programming/racer-master/target/debug/racer")
 ;; (add-to-list 'load-path "<path-to-racer>/editors")
+
 (defun mycfg-set-rust-backend ()
-  (company-mode-on)
   (set (make-local-variable 'company-backends) '(company-racer))
 )
 
 (defun mycfg-set-c-backend ()
-  (company-mode-on)
-  (set (make-local-variable 'company-backends) '(company-irony company-c-headers company-abbrev))
+  (set (make-local-variable 'company-backends) '(company-irony company-abbrev))
   (irony-cdb-autosetup-compile-options)
 )
 
+(defun my-term-setup-hook()
+  (define-key input-decode-map "\e[33~" (kbd "M-<DEL>")))
+;  (define-key input-decode-map "\e[3~" (kbd "M-<DEL>")))
+
 (defun mycfg-set-python-hook ()
-  (company-mode-on)
   (set (make-local-variable 'company-backends) '(company-jedi company-abbrev))
   )
 
 (defun mycfg-lisp-hook ()
-  (company-mode-on)
   (set (make-local-variable 'company-backends) '(company-elisp company-abbrev))
   )
 
@@ -55,10 +59,23 @@
 	     )
 	(set (make-local-variable 'irony-additional-clang-options) (list "-std=c++11"))
 	)
+    (progn
+      (set (make-local-variable 'irony--compile-options) (list "-std=c++11" "-I/usr/include" "-I/usr/include/c++/5.2.0"))
+      (set (make-local-variable 'company-c-headers-path-system)
+	 (list "/usr/include"
+	       "/usr/local/include"
+	       "/usr/include/c++/5.2.0")
     )
+      ))
+  (add-to-list 'company-backends 'company-c-headers)
   )
 
+(add-hook 'rust-mode-hook 'company-mode-on)
+(add-hook 'c-mode-hook 'company-mode-on)
+(add-hook 'c++-mode-hook 'company-mode-on)
+(add-hook 'c-mode-common-hook 'company-mode-on)
 ;; adding hooks
+(add-hook 'tty-setup-hook 'my-term-setup-hook)
 (add-hook 'projectile-mode-hook 'mycfg-projectile-hook)
 (add-hook 'python-mode-hook 'mycfg-set-python-hook)
 (add-hook 'rust-mode-hook 'mycfg-set-rust-backend)
@@ -92,7 +109,9 @@
 	    "~/Notes/sports.org"
 	    "~/Notes/study.org"))
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+
 (global-set-key "\C-ca" 'org-agenda)
+(global-set-key (kbd "M-DEL") 'backward-kill-word)
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

@@ -1,3 +1,9 @@
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintslight
+
 XTerm*faceName: Bitstream Vera Serif Mono
 xterm*faceSize: 16
 xterm*vt100*geometry: 80x60
@@ -7,11 +13,14 @@ xterm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
 xterm*termName: xterm-color
 xterm*eightBitInput: false
 
-URxvt.font:     xft:bitstream vera sans mono:size=16:antialias=true
-URxvt.boldFont: xft:bitstream vera sans mono:bold:size=16:antialias=true
-
+URxvt*utf8: 1
+URxvt*locale: 1
+URxvt.font:     xft:Dejavu Sans Mono:size=16:antialias=true
+URxvt.boldFont: xft:Dejavu Sans Mono:size=16:antialias=true
+URxvt.letterSpace: -1
+URxvt.underlineURLs: true
 URxvt.perl-ext-common:  default,clipboard,matcher,tabbedex
-URxvt.url-launcher:      chromium-browser
+URxvt.url-launcher:      chromium
 URxvt.matcher.button:   1
 URxvt.colorUL: #4682B4
 URxvt.tabbed.tabbar-fg: 2
@@ -21,6 +30,7 @@ URxvt.tabbed.tab-bg: 0
 URxvt.tabbed.autohide:  yes
 URxvt.tabbed.new-button:  yes
 URxvt.tabbed.title: yes
+URxvt.keysym.C-BackSpace:       \033[33~
 URxvt.keysym.Control-Mod4-t: perl:tabbedex:new_tab
 URxvt.keysym.Mod4-Page_Up: perl:tabbedex:next_tab
 URxvt.keysym.Mod4-Page_Down: perl:tabbedex:prev_tab
